@@ -1,0 +1,78 @@
+# Git 相关
+.git
+.gitignore
+.gitattributes
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# IDE 文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.spyderproject
+.spyproject
+
+# OS 文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker 文件（避免递归复制）
+docker/
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# 大文件和输出
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.weights
+output_videos/*.avi
+output_videos/*.mp4
+output_videos/*.gif
+runs/detect/*
+logs/*.log
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints/
+
+# 数据集（如果很大）
+training/tennis-ball-detection-6/tennis-ball-detection-6/train/
+training/tennis-ball-detection-6/tennis-ball-detection-6/valid/
+training/tennis-ball-detection-6/tennis-ball-detection-6/test/
+
+# 环境文件
+.env
+.env.local

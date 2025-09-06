@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  tennis-analysis:
+    build: .
+    container_name: tennis-analysis-app
+    volumes:
+      - .:/app
+      - ./input_videos:/app/input_videos
+      - ./output_videos:/app/output_videos
+      - ./models:/app/models
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY}
+      - PYTHONPATH=/app
+    network_mode: host
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+
+  tennis-notebook:
+    build: .
+    container_name: tennis-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+      - ./input_videos:/app/input_videos
+      - ./output_videos:/app/output_videos
+      - ./models:/app/models
+    environment:
+      - PYTHONPATH=/app
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''

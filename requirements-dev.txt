@@ -1,0 +1,5 @@
+# 开发和其他工具依赖
+jupyter==1.0.0
+jupyterlab==3.6.0
+gdown==4.7.1
+roboflow==1.0.9
