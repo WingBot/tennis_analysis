@@ -247,13 +247,53 @@ grep -i traceback debug.log
 
 ## 🎯 进阶使用
 
+### 🧪 模型测试 (新增功能)
+
+#### 单独测试各个模型
+```bash
+# 网球检测模型测试
+./test_models.sh  # 选择选项1
+
+# 球场关键点模型测试  
+./test_models.sh  # 选择选项2
+
+# 完整集成测试
+./test_models.sh  # 选择选项3
+
+# 运行所有测试
+./test_models.sh  # 选择选项4
+```
+
+#### 手动运行单个模型测试
+```bash
+# 测试网球检测模型
+docker run -it --rm \
+  -v $(pwd)/input_videos:/app/input_videos \
+  -v $(pwd)/output_videos:/app/output_videos \
+  -v $(pwd)/models:/app/models \
+  -v $(pwd):/app \
+  tennis-analysis:latest python test_ball_model.py
+
+# 测试球场关键点模型  
+docker run -it --rm \
+  -v $(pwd)/input_videos:/app/input_videos \
+  -v $(pwd)/output_videos:/app/output_videos \
+  -v $(pwd)/models:/app/models \
+  -v $(pwd):/app \
+  tennis-analysis:latest python test_court_model.py
+
+# 完整模型集成测试
+docker run -it --rm \
+  -v $(pwd)/input_videos:/app/input_videos \
+  -v $(pwd)/output_videos:/app/output_videos \
+  -v $(pwd)/models:/app/models \
+  -v $(pwd):/app \
+  tennis-analysis:latest python test_complete_models.py
+```
+
 ### 运行完整版本
 ```bash
-# 需要先训练/下载所有模型
-# models/yolo5_last.pt
-# models/keypoints_model.pth
-
-# 然后运行完整程序
+# 现在所有模型都已下载，可以运行完整程序
 docker run -it --rm \
   -v $(pwd)/input_videos:/app/input_videos \
   -v $(pwd)/output_videos:/app/output_videos \

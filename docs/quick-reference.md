@@ -1,11 +1,30 @@
 # 网球分析系统 - 快速参考
 
-## 🚀 ceshi
+## 🚀 快速启动
 
+### 完整分析 (推荐) ✅
 ```bash
+# 进入项目目录
 cd /home/czzr/Project/tennis_sys/tennis_analysis
-bash docs/quick-test.sh
+
+# 运行完整工作版本 (已验证成功)
+docker run --rm -v "$PWD":/workspace -w /workspace tennis-analysis:latest python main_working.py
 ```
+
+**成功标志:** 
+- 🎥 处理214帧视频
+- 🏟️ 检测14个球场关键点
+- 🎾 发现10个击球时刻  
+- 📊 平均球速13.0 km/h
+- 💾 生成 `output_videos/output_video_complete.avi` (~45MB)
+
+### 快速验证测试
+```bash
+# 运行验证测试
+docker run --rm -v "$PWD":/workspace -w /workspace tennis-analysis:latest python test_validation.py
+```
+
+**期望输出:** 生成 `output_videos/model_validation_test.avi` (~3.7MB)
 
 ## ⚡ 快速命令
 
