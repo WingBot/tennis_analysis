@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Development environment - customize service name
+  your-project-dev:
+    build: 
+      context: ..
+      dockerfile: docker/Dockerfile.base
+    container_name: your-project-dev
+    volumes:
+      - ../:/app
+      # Add your data volumes here
+      # - ../data:/app/data
+      # - ../output:/app/output
+      # X11 forwarding for GUI (remove if not needed)
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    environment:
+      - DISPLAY=${DISPLAY:-:0}
+      - PYTHONPATH=/app
+    network_mode: host
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    working_dir: /app
+    command: /bin/bash
+
+  # Jupyter environment - customize or remove if not needed
+  your-project-jupyter:
+    build: 
+      context: ..
+      dockerfile: docker/Dockerfile.base
+    container_name: your-project-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../:/app
+      # Add your data volumes here
+      # - ../data:/app/data
+      # - ../output:/app/output
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    working_dir: /app
+    command: /bin/bash -c "pip install jupyter jupyterlab && jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --ServerApp.token='' --ServerApp.password=''"
