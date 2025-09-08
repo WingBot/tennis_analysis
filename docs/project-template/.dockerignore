@@ -1,0 +1,42 @@
+# Git and version control
+.git
+.gitignore
+
+# Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker files (avoid recursive copies)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Large data files (customize as needed)
+# data/*
+# models/*.pt
+# models/*.pth
+# output/*.mp4
+# output/*.avi
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+logs/

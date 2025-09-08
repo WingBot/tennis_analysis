@@ -1,0 +1,4 @@
+# Core stable dependencies - customize for your project
+numpy>=1.21.0
+requests>=2.25.0
+# Add your core dependencies here

@@ -1,0 +1,5 @@
+# Machine learning dependencies - customize or remove if not needed
+# torch>=1.12.0
+# torchvision>=0.13.0
+# tensorflow>=2.10.0
+# scikit-learn>=1.1.0

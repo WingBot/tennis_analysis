@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Main application service - customize as needed
+  your-project:
+    build: .
+    container_name: your-project-app
+    volumes:
+      - .:/app
+      # Add your data volumes here
+      # - ./data:/app/data
+      # - ./output:/app/output
+      # - ./models:/app/models
+    environment:
+      - PYTHONPATH=/app
+    # ports: ["8080:8080"]  # Uncomment and customize for web apps
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+
+  # Jupyter notebook service - remove if not needed
+  your-project-notebook:
+    build: .
+    container_name: your-project-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+      # Add your data volumes here
+      # - ./data:/app/data
+      # - ./output:/app/output
+    environment:
+      - PYTHONPATH=/app
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
